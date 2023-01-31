@@ -15,7 +15,7 @@
 						</div>
 					</div>
 
-					<div id="shipping-info">
+					<!-- <div id="shipping-info">
 						<hr>
 						<p>Shipping Information:</p>
 						<hr>
@@ -34,7 +34,7 @@
 						<div class="form-field">
 							<input class="form-control" type="text" name="country" placeholder="Country..">
 						</div>
-					</div>
+					</div> -->
 
 					<hr>
 					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
@@ -43,8 +43,8 @@
 
 			<br>
 			<div class="box-element hidden" id="payment-info">
-				<p>Payment Options :</p>
-        <div id="paypal-button-container"></div>
+				<p>Order Successful!</p>
+        <!-- <div id="paypal-button-container"></div> -->
         <!--button id="make-payment">Make Payment</button-->
 			</div>
 
@@ -114,9 +114,9 @@
         document.getElementById('shipping-info').innerHTML = ''
       }
 
-      if (user != 'AnonymousUser') {
-          document.getElementById('user-info').innerHTML = ''
-      }
+      // if (user != 'AnonymousUser') {
+      //     document.getElementById('user-info').innerHTML = ''
+      // }
 
       if (shipping == 'False' && user != 'AnonymousUser') {
         //Hide entire form if user is logged in and shipping is false
@@ -187,9 +187,6 @@
         .then((data) => {
           console.log('Success:',data);
           alert('Transaction Completed');
-
-          // the below line, clears out our cookies, after checkout has been completed
-          // and, later we are redirected to the home page, along with an empty cart
           cart = {}
           document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
 
