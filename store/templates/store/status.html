@@ -1,0 +1,47 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md">
+        <div class="box-element">
+            <h4>Order Status</h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <h6>Order ID</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>Order Date</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>Order Status</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>Order Total</h6>
+                </div>
+            </div>
+            <hr>
+            {% for order in orderno %}
+            <div class="row">
+                <div class="col-md-3">
+                    <h6>{{order.customer}}</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{order.date_ordered}}</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{ order.complete }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{ order.transaction_id }}</h6>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

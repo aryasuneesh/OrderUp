@@ -44,6 +44,21 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 
+
+
+
+def status(request):
+    orderno = Order.objects.all()
+    data  = cartData(request)
+    cartItems = data['cartItems']
+
+    products = Product.objects.all()
+    context = {"products":products, 'cartItems':cartItems, 'orderno':orderno}
+    return render(request, 'store/status.html', context)
+
+
+
+
 def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -99,5 +114,10 @@ def processOrder(request):
     #         state = data['shipping']['state'],
     #         zipcode = data['shipping']['zipcode'],
     #         )
+
+
+
+
+
 
     return JsonResponse("Payment submitted...",safe=False)
