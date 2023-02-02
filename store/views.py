@@ -49,7 +49,7 @@ def checkout(request):
 
 
 def status(request):
-    orderno = Order.objects.all()
+    orderno = Order.objects.all().order_by('-orderstatus')
     data  = cartData(request)
     cartItems = data['cartItems']
 
