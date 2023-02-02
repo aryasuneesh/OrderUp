@@ -4,6 +4,7 @@ import datetime
 import json
 from .models import  *
 from .utils import *
+import uuid
 
 
 # remember to change the code here, to show total cart value at about page too
@@ -87,7 +88,6 @@ def updateItem(request):
 
 
 def processOrder(request):
-    transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
     if request.user.is_authenticated:
@@ -99,10 +99,11 @@ def processOrder(request):
         customer, order = guestOrder(request, data)
 
     total = float(data['form']['total'])
-    order.transaction_id = transaction_id
+    
 
     if total == order.get_cart_total:
         order.complete = True
+    order.transaction_id = str(uuid.uuid4())[:5]
     order.save()
 
     # if order.shipping == True:

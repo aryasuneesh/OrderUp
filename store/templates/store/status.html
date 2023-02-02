@@ -21,6 +21,9 @@
                 <div class="col-md-3">
                     <h6>Order Total</h6>
                 </div>
+                <div class="col-md-3">
+                    <h6>Order Token</h6>
+                </div>
             </div>
             <hr>
             {% for order in orderno %}
@@ -36,6 +39,9 @@
                 </div>
                 <div class="col-md-3">
                     <h6>{{order.get_cart_total}}</h6>
+                </div>
+                <div class="col-md-3">
+                    <h6>{{order.get_transaction_id}}</h6>
                 </div>
             </div>
             <hr>
